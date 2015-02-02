@@ -138,11 +138,27 @@ KaiMingPunct+ = {：；},
 
 \usepackage{xstring}
 
+%The baseline-skip should be set to roughly 1.2x the font size.
+%\fontsize{size}{baselineskip}
+%\fontsize{50}{60}
+
 % 计算所能容纳的字数
 \newcommand\shizishow[1]{
 \StrLen{#1}[\mystringlen]
 %\def\mythresh{1}
-    \ifthenelse{\mystringlen < 16}{
+    \ifthenelse{\mystringlen < 2}{
+        {\fontsize{130}{156} #1}
+    }{ \ifthenelse{\mystringlen < 3}{
+        {\fontsize{110}{122} #1}%{\fontsize{100}{120} #1}
+    }{ \ifthenelse{\mystringlen < 4}{
+        {\fontsize{78}{94} #1}%{\fontsize{90}{108} #1}
+    }{ \ifthenelse{\mystringlen < 5}{
+        {\fontsize{55}{66} #1}
+    }{ \ifthenelse{\mystringlen < 7}{
+        {\fontsize{70}{84} #1}
+    }{ \ifthenelse{\mystringlen < 9}{
+        {\fontsize{55}{66} #1}
+    }{ \ifthenelse{\mystringlen < 16}{
         {\zihao{0} #1} %5x4=20
     }{ \ifthenelse{\mystringlen < 49}{
         {\zihao{1} #1} % 8x6=48
@@ -176,7 +192,7 @@ KaiMingPunct+ = {：；},
         {\zihao{7} #1} % 42x9=378
     }{
         {\tiny #1} % 46x9=414 %{\zihao{8} #1} % 46x9=414
-    }}}}}}}}}}}}}}}}
+    }}}}}}}}}}}}}}}}}}}}}}
 }
 
 % 计算包含拼音时所能容纳的字数
@@ -338,3 +354,67 @@ KaiMingPunct+ = {：；},
 \vspace*{\stretch{1}}
 \end{flashcard}
 }
+
+
+
+
+
+\newcommand\docshowcopyright{
+\begin{flashcard}[Copyright \& License]{Copyright \copyright \, 2014 Yunhui Fu\\
+Some rights reserved.}
+\vspace*{\stretch{1}}
+These flashcards and the accompanying \LaTeX \, source code are licensed
+under a Creative Commons Attribution--NonCommercial--ShareAlike 2.5 License.  
+For more information, see creativecommons.org.  You can contact the author at:
+\begin{center}
+\begin{small}\tt yhfudev at gmail com\end{small}
+
+\medskip
+File last updated on \today, \\
+at \currenttime
+\end{center}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[版权申明]{版权所有 \copyright \, 2014 Yunhui Fu\\
+有些版权保留.}
+\vspace*{\stretch{1}}
+闪卡及其 \LaTeX \, 源代码在
+署名-相同方式共享 2.5 下保护.
+参见 creativecommons.org.  你可以联系作者：
+\begin{center}
+\begin{small}\tt yhfudev at gmail com\end{small}
+
+\medskip
+文件最近更新： \today, \\
+\currenttime
+\end{center}
+\vspace*{\stretch{1}}
+\end{flashcard}
+}
+
+
+
+
+
+
+\newcommand\docshowtitle[3]{
+\begin{flashcard}[]{ %
+{\mykaiti \Huge{#1}}
+
+{\myfangsong \normalsize #2} %
+} %
+\vspace*{\stretch{1}}
+\begin{center}
+
+{\mykaiti \shizishow{#3}}
+
+\end{center}
+\vspace*{\stretch{1}}
+\end{flashcard}
+}
+
+
+
+
+

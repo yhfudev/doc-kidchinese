@@ -4,7 +4,18 @@
 
 #LANG=en zh tw
 LANG=zh
-SRC_PREFIX=fc-ts300 fc-siwukuaidu1 fc-siwukuaidu2 fc-sanzijing1 fc-sanzijing2
+SRC_PREFIX= \
+    fc-ts300 \
+    fc-gsxxs100 \
+    fc-sanzijing1 \
+    fc-sanzijing2 \
+    fc-siwukuaidu1 \
+    fc-siwukuaidu2 \
+    fc-siwukuaidu3 \
+    fc-siwukuaidu4 \
+    fc-siwukuaidu5 \
+    fc-siwukuaidu6 \
+    $(NULL)
 
 define SRC_FROM_PREFIX
 	$(addsuffix .tex, $(foreach file, $(SRC_PREFIX), $(basename $(notdir $(file)))))
