@@ -237,6 +237,7 @@ KaiMingPunct+ = {：；},
 }
 }
 
+
 % 计算在comment中（三字经）能容纳的字数
 \newcommand\sanzicomments[1]{
 \StrLen{#1}[\mystringlen]
@@ -283,7 +284,7 @@ KaiMingPunct+ = {：；},
 % 诗词
 \newcommand\shici[5]{
 \begin{flashcard}[#1 -- #2 （#3） #4]{%
-{\mykaiti \Large {#5}} %\\
+{\mykaiti \fontsize{20}{24} {#5}} %\\
 }
 \vspace*{\stretch{1}}
 \begin{center}
