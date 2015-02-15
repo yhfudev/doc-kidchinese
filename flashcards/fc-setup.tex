@@ -280,7 +280,6 @@ KaiMingPunct+ = {：；},
 }
 
 
-
 % 诗词
 \newcommand\shici[5]{
 \begin{flashcard}[#1 -- #2 （#3） #4]{%
@@ -339,9 +338,15 @@ KaiMingPunct+ = {：；},
 
 \newcounter{fcsanzi}\setcounter{fcsanzi}{0}
 
+\newcommand{\mystringa}{}
+
 % 三字经
 \newcommand\sanzijing[3]{
 \stepcounter{fcsanzi}
+\StrLen{#3}[\mystringlen]
+\ifthenelse{\mystringlen > 0}{
+\renewcommand{\mystringa}{【解读】 #3}
+}{\renewcommand{\mystringa}{}}
 \begin{flashcard}[]{
 \mykaiti \fontsize{26}{\baselineskip}\selectfont \xpinyin*{#1}
 }
@@ -351,9 +356,9 @@ KaiMingPunct+ = {：；},
 {
 \myfangsong
 \sanzicomments{
-【解释】 #2
+〖解释〗 #2
 
-〖解读〗 #3
+\mystringa
 }
 }
 %\end{center}
