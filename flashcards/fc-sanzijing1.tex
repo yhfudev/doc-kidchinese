@@ -4,18 +4,21 @@
 % vim:ts=4:sw=4
 %
 % 以上设定默认使用 XeLaTex 编译，并指定 Unicode 编码，供 TeXShop 自动识别
-\documentclass[avery5371,grid]{flashcards}
-
-\cardfrontstyle[\large\slshape]{headings}
-\cardbackstyle{empty}
-\cardfrontfoot{三字經}
 
 \newcommand{\doctitle}{三字經}
 \newcommand{\docauthor}{}
 \newcommand{\dockeywords}{{中文}}
 \newcommand{\docsubject}{}
 
+\documentclass[avery5371,grid]{flashcards}
+
+%\newcounter{fcsanzi}\setcounter{fcsanzi}{1}
+
 \input{fc-setup}
+
+\cardfrontstyle[\large\slshape]{headings}
+\cardbackstyle{empty}
+\cardfrontfoot{\doctitle -- \the\value{fcsanzi}}
 
 \usepackage{datetime}
 
@@ -25,7 +28,6 @@
 \docshowtitle{\doctitle}{\docauthor}{%
 使用双面打印，然后按线剪下。
 }
-
 
 % http://ccigf01.blogspot.com/search/label/%E4%B8%89%E5%AD%97%E7%B6%93-01
 \sanzijing{人之初、性本善、 \\性相近、習相遠、} % 原文

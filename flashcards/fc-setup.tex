@@ -337,20 +337,25 @@ KaiMingPunct+ = {：；},
 }
 
 
-
+\newcounter{fcsanzi}\setcounter{fcsanzi}{0}
 
 % 三字经
 \newcommand\sanzijing[3]{
-\begin{flashcard}[]{\mykaiti \fontsize{26}{\baselineskip}\selectfont \xpinyin*{#1}}%{\Huge \xpinyin*{#1}}
+\stepcounter{fcsanzi}
+\begin{flashcard}[]{
+\mykaiti \fontsize{26}{\baselineskip}\selectfont \xpinyin*{#1}
+}
 \vspace*{\stretch{1}}
 %\begin{center}
 %\normalsize
-{\myfangsong
+{
+\myfangsong
 \sanzicomments{
 【解释】 #2
 
 〖解读〗 #3
-}}
+}
+}
 %\end{center}
 \vspace*{\stretch{1}}
 \end{flashcard}

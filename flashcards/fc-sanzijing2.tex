@@ -4,18 +4,19 @@
 % vim:ts=4:sw=4
 %
 % 以上设定默认使用 XeLaTex 编译，并指定 Unicode 编码，供 TeXShop 自动识别
-\documentclass[avery5371,grid]{flashcards}
-
-\cardfrontstyle[\large\slshape]{headings}
-\cardbackstyle{empty}
-\cardfrontfoot{新三字經}
 
 \newcommand{\doctitle}{新三字經}
 \newcommand{\docauthor}{}
 \newcommand{\dockeywords}{{中文}}
 \newcommand{\docsubject}{}
 
+\documentclass[avery5371,grid]{flashcards}
+
 \input{fc-setup}
+
+\cardfrontstyle[\large\slshape]{headings}
+\cardbackstyle{empty}
+\cardfrontfoot{\doctitle -- \the\value{fcsanzi}}
 
 \usepackage{datetime}
 
