@@ -47,7 +47,7 @@ DEFAULT: $(OUTPDFS)
 
 $(OUTPDFS): $(OUTPREFIXS)
 
-$(OUTPREFIXS): $(SOURCES)
+$(OUTPREFIXS): $(SOURCES) fc-setup.tex
 	@touch $@
 	xelatex -jobname lang-$(shell echo $@ | awk -F. '{print $$2 }') $(shell echo $@ | awk -F. '{print $$1 }')
 	#bibtex lang-$(shell echo $@| awk -F. '{print $$2 }')
