@@ -1,14 +1,32 @@
-%!TEX program = xelatex
+%# -*- coding: utf-8 -*-
+%!TEX encoding = UTF-8 Unicode
+%!TEX TS-program = xelatex
+% vim:ts=4:sw=4
+%
+% 以上设定默认使用 XeLaTex 编译，并指定 Unicode 编码，供 TeXShop 自动识别
 %http://tex.stackexchange.com/questions/148843/how-to-write-over-a-table
-
-\documentclass[UTF8, adobefonts, oneside]{ctexbook} \newcommand{\whzkjk}{\kaishu}
-%\documentclass[oneside]{book} \input{setupfonts}
-
 
 \newcommand{\doctitle}{《中文》描红}
 \newcommand{\docauthor}{Yunhui Fu}
 \newcommand{\dockeywords}{{中文}{描红}}
 \newcommand{\docsubject}{《中文》描红}
+
+
+\newcommand\mymainfont{Noto Serif}%{Times New Roman} %{DejaVu Serif}
+\newcommand\mymonofont{DejaVu Sans Mono}%{FreeMono} %{WenQuanYi Micro Hei Mono} %{Monaco}
+\newcommand\myboldfont{DejaVu Sans Mono} %{WenQuanYi Micro Hei Mono}%{AR PL UKai CN}%{YaHei Consolas Hybrid}%{黑体}%{標楷體}
+\newcommand\mysansfont{DejaVu Sans}%{FreeSans}
+\newcommand\myitalicfont{DejaVu Serif}%{Times New Roman} %{Garamond}
+
+\newcommand\mycjkboldfont{Microsoft YaHei} %{WenQuanYi Micro Hei Mono}%{Adobe Heiti Std}%{AR PL UKai CN}%{YaHei Consolas Hybrid}%{黑体}%{標楷體}
+\newcommand\mycjkitalicfont{全字庫正楷體} %{Adobe Kaiti Std}
+\newcommand\mycjkmainfont{全字庫正楷體} %{Adobe Song Std} %{AR PL UMing CN}%{仿宋}%{宋体}%{新宋体}%{文鼎ＰＬ新宋}%
+\newcommand\mycjksansfont{MingLiU} %{Adobe Ming Std}
+\newcommand\mycjkmonofont{WenQuanYi Micro Hei Mono}%{AR PL UMing CN}%{WenQuanYi Micro Hei Mono}
+
+
+\documentclass[UTF8, adobefonts, oneside]{ctexbook} \newcommand{\whzkjk}{\kaishu}
+%\documentclass[oneside]{book} \input{setupfonts}
 
 \usepackage{ifthen}
 \usepackage{ifpdf}
@@ -16,8 +34,38 @@
 \usepackage{ifluatex}
 
 
-\usepackage{amsfonts,amssymb}
 
+\xeCJKsetup{AutoFallBack = true} % you have to use this, since fallback won't work as the xeCJK option after the ctex
+
+\PassOptionsToPackage{
+    BoldFont,  % 允許粗體
+    SlantFont, % 允許斜體
+    CJKnumber,
+    CJKtextspaces,
+    }{xeCJK}
+\defaultfontfeatures{Mapping=tex-text} % 如果沒有它，會有一些 tex 特殊字符無法正常使用，比如連字符。
+
+\xeCJKsetup {
+    CheckSingle = true,
+    AutoFakeBold = false,
+AutoFakeSlant = false,
+    CJKecglue = {},
+    PunctStyle = kaiming,
+KaiMingPunct+ = {：；},
+}
+
+\PassOptionsToPackage{CJKchecksingle}{xeCJK}
+\XeTeXlinebreaklocale "zh"                      % 重要，使得中文可以正確斷行！
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt  % 给予TeX断行一定自由度
+\linespread{1.3}                                % 1.3倍行距
+
+\setCJKmainfont[BoldFont=\mycjkboldfont, ItalicFont=\mycjkitalicfont]{\mycjkmainfont}
+\setCJKsansfont{\mycjksansfont}%{Adobe Ming Std} %{AR PL UMing CN} %{Microsoft YaHei}
+\setCJKmonofont{\mycjkmonofont}
+
+
+
+\usepackage{amsfonts,amssymb}
 
 \usepackage{color}
 \usepackage[rgb]{xcolor}
@@ -135,7 +183,7 @@
     \@@_update_grid_box:
     \xeCJK_swap_cs:NN \CJKsymbol \@@_grid_CJKsymbol:n
     \xeCJK_swap_cs:NN \CJKpunctsymbol \@@_grid_CJKpunctsymbol:n
-    \__xeCJK_add_to_shipout:n
+    \xeCJK_add_to_shipout:n
       {
         \xeCJK_swap_cs:NN \CJKsymbol \@@_grid_CJKsymbol:n
         \xeCJK_swap_cs:NN \CJKpunctsymbol \@@_grid_CJKpunctsymbol:n
@@ -267,6 +315,8 @@
   \includegraphics[width=0.8\textwidth]{figures/wubi86}
   \caption{五笔输入法字根表86版} \label{fig:wubi}
 \end{figure}
+
+\clearpage
 
 %1区横起笔　11G 王旁青头戋（兼）五一 12F 土士二干十寸雨 13D 大犬三（羊）古石厂 14S 木丁西 15A 工戈草头右框七
 %2区竖起笔　21H 目具上止卜虎皮 22J 日早两竖与虫依 23K 口与川，字根稀 24L 田甲方框四车力 25M 山由贝，下框几
